@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flight Price prediction</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>>
+<body>
+<div class="container">
+	<h1><mark>Flight Price Prediction Application</mark></h1>
+
+	<h5>Please enter the details below</h5>
+
+		<div class="form">
+        	<form action="/pred" method="POST">
+			<div class="col-xs-2">
+			Airline: <select class="form-control" name="airline">
+			<option>IndiGo</option>
+			<option>Air India</option>
+			<option>Jet Airways</option>
+			<option>SpiceJet</option>
+			<option>Multiple carriers</option>
+			<option>GoAir</option>
+			<option>Vistara</option>
+			<option>Air Asia</option>
+			<option>Vistara Premium economy</option>
+			<option>Jet Airways Business</option>
+			<option>Multiple carriers Premium economy</option>
+			<option>Trujet</option>
+			</select></div><br><br><br>
+			<div class="col-xs-2">
+			Source: <select class="form-control" name="source">
+			<option>Banglore</option>
+			<option>Kolkata</option>
+			<option>Delhi</option>
+			<option>Chennai</option>
+			<option>Mumbai</option>
+			</select></div><br><br><br>
+			<div class="col-xs-2">
+			Destination: <select class="form-control" name="destination">
+			<option>New Delhi</option>
+			<option>Banglore</option>
+			<option>Cochin</option>
+			<option>Kolkata</option>
+			<option>Delhi</option>
+			<option>Hyderabad</option>
+			</select></div><br><br><br>
+			<div class="col-xs-2">
+			Duration: <input type="number" placeholder="Enter in minutes" class="form-control" name="duration">
+			</div><br><br><br>
+			<div class="col-xs-2">
+			Total Stops: <select class="form-control" name="totalstops"><br><br>
+			<option>non-stop</option>
+			<option>2 stops</option>
+			<option>1 stop</option>
+			<option>3 stops</option>
+			<option>4 stops</option>
+			</select></div><br><br><br>
+			<div class="col-xs-2">
+			Additional Information: <select class="form-control" name="addinfo">
+			<option>No info</option>
+			<option>In-flight meal not included</option>
+			<option>No check-in baggage included</option>
+			<option>1 Short layover</option>
+			<option>No Info</option>
+			<option>1 Long layover</option>
+			<option>Change airports</option>
+			<option>Business class</option>
+			<option>Red-eye flight</option>
+			<option>2 Long layover</option>
+			</select></div><br><br><br>
+			<table>
+				<td><div class="col-xs-10">Date: <input type="number" class="form-control" name="date" min="1" max="31"></div></td>
+				<td><div class="col-xs-10">Month: <input type="number" class="form-control" name="month" min="1" max="12"></div></td>
+			</table><br>
+			<table>
+				<td><div class="col-xs-10">Arrival hour: <input type="number" class="form-control" name="ah" min="1" max="24"></div></td>
+				<td><div class="col-xs-10">Arrival minute: <input type="number" class="form-control" name="am" min="1" max="60"></div></td>
+				<td><div class="col-xs-10">Departure hour: <input type="number" class="form-control" name="dh" min="1" max="24"></div></td>
+				<td><div class="col-xs-10">Departure minute: <input type="number" class="form-control" name="dm" min="1" max="60"></div></td>
+			</table><br>
+			<table>
+			<td><div class="col-xs-12">Route 1: <select class="form-control" name="r1">
+			<option>BLR</option>
+			<option>CCU</option>
+			<option>DEL</option>
+			<option>MAA</option>
+			<option>BOM</option>
+
+			</select></div></td>
+			<td><div class="col-xs-12">Route 2: <select class="form-control" name="r2">
+			<option>DEL</option>
+			<option>IXR</option>
+			<option>LKO</option>
+			<option>NAG</option>
+			<option>BLR</option>
+			<option>BOM</option>
+			<option>CCU</option>
+			<option>AMD</option>
+			<option>PNQ</option>
+			<option>COK</option>
+			<option>IDR</option>
+			<option>GAU</option>
+			<option>MAA</option>
+			<option>HYD</option>
+			<option>BHO</option>
+			<option>JAI</option>
+			<option>ATQ</option>
+			<option>JDH</option>
+			<option>BBI</option>
+			<option>GOI</option>
+			<option>BDQ</option>
+			<option>TRV</option>
+			<option>IXU</option>
+			<option>IXB</option>
+			<option>UDR</option>
+			<option>RPR</option>
+			<option>DED</option>
+			<option>VGA</option>
+			<option>VNS</option>
+			<option>IXC</option>
+			<option>PAT</option>
+			<option>JLR</option>
+			<option>KNU</option>
+			<option>GWL</option>
+			<option>VTZ</option>
+			<option>NDC</option>
+			<option>IXZ</option>
+			<option>HBX</option>
+			<option>IXA</option>
+			<option>STV</option>
+
+			</select></div></td>
+			<td><div class="col-xs-12">Route 3: <select class="form-control" name="r3">
+			<option>None</option>
+			<option>BBI</option>
+			<option>BOM</option>
+			<option>BLR</option>
+			<option>DEL</option>
+			<option>COK</option>
+			<option>AMD</option>
+			<option>HYD</option>
+			<option>JDH</option>
+			<option>MAA</option>
+			<option>GOI</option>
+			<option>NAG</option>
+			<option>GAU</option>
+			<option>BHO</option>
+			<option>IXR</option>
+			<option>IDR</option>
+			<option>ISK</option>
+			<option>VGA</option>
+			<option>PNQ</option>
+			<option>JAI</option>
+			<option>TRV</option>
+			<option>HBX</option>
+			<option>IMF</option>
+			<option>CCU</option>
+			<option>UDR</option>
+			<option>VTZ</option>
+			<option>IXC</option>
+
+			</select></div></td>
+			<td><div class="col-xs-12">Route 4: <select class="form-control" name="r4">
+			<option>None</option>
+			<option>BLR</option>
+			<option>COK</option>
+			<option>DEL</option>
+			<option>BOM</option>
+			<option>HYD</option>
+			<option>GWL</option>
+			<option>TRV</option>
+			<option>BBI</option>
+			<option>BHO</option>
+			<option>AMD</option>
+			<option>NAG</option>
+
+			</select></div></td>
+			<td><div class="col-xs-12">Route 5: <select class="form-control" name="r5">
+			<option>None</option>
+			<option>COK</option>
+			<option>BLR</option>
+			<option>DEL</option>
+			<option>HYD</option>
+			<option>VGA</option>
+
+			</select></div></td>
+			</table><br>
+				<div class="col-xs-2"><input type="submit" value="submit" class="form-control"></div><br><br>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
